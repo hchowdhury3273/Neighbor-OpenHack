@@ -43,11 +43,11 @@ class ItemFormViewController: UIViewController {
 //                        population: 5000000)
         
         let item = Item(price: itemPrice, name: itemName)
-        let duce = ["reqLis": item]
+//        let duce = ["reqLis": item]
 
         do {
             
-            let docRef = FirebaseManager.doc_userRef
+//            let docRef = FirebaseManager.doc_userRef
 //
             try FirebaseManager.doc_userRef.setData(from: [ itemName :[
             item, item

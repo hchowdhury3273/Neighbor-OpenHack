@@ -8,12 +8,8 @@ class UserHub {
 //    for homeVC table view
     var requestedList: [Item] = [Item]() {
         willSet {
-            let list = UserHub.sharedInstance.requestedList
-//            print("willset \(list.count)")
         }
         didSet {
-            let list = UserHub.sharedInstance.requestedList
-//            print("didset \(list.count)")
             NotificationCenter.default.post(name: .vcOneAction, object: self)
         }
     }
@@ -21,13 +17,13 @@ class UserHub {
 //    for shoppingVC table view
     var shoppingList: [GroceryList] = [GroceryList]() {
         willSet {
-//            print("CHNAGEING SHOP LIST")
         }
         didSet {
             NotificationCenter.default.post(name: .shoppingList, object: self)
         }
     }
     
+//    for feedVC table view
     var neighborList: [GroceryList] = [GroceryList]() {
         willSet {
             
@@ -48,16 +44,23 @@ class UserHub {
     }
     
     func listenNeighborLists() {
+        neighborList.removeAll()
+        
         FirebaseManager.db.collectionGroup("users").addSnapshotListener{ (querySnapshot, err) in
             print("HELLO")
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 print("rorar")
-                for document in querySnapshot!.documents {
+                for (index, document) in querySnapshot!.documents.enumerated() {
 
 //                    SUBCOLLECTION START
                     let id = document.documentID
+                    
+                    if id == FirebaseManager.db_userUid {
+                        continue
+                    }
+                    self.neighborList[index].name = id
                     let subCol = FirebaseManager.col_usersRef.document(id).collection("shoppingList").document("requestedItems")
                     print("ID IS")
 
@@ -71,9 +74,11 @@ class UserHub {
                               for output in data {
                                   if let itemDeets = output.value as? [String] {
                                       let shopItem = Item(price: itemDeets[1], name: output.key, notes: itemDeets[0])
+                                  self.neighborList[index].groceryItems.insert(shopItem, at: 0)
                                     print(shopItem)
                                   }
                               }
+                            print(self.neighborList)
                         } else {
                             print("Document does not exist")
                         }

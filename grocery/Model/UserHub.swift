@@ -29,7 +29,8 @@ class UserHub {
             
         }
         didSet {
-            
+            print("neibotListUpdate")
+            NotificationCenter.default.post(name: .neighborList, object: self)
         }
     }
     
@@ -40,11 +41,13 @@ class UserHub {
         let userList = GroceryList(name: User.name ?? "My List", groceryItems: requestedList)
         shoppingList.append(userList)
         listenNeighborLists()
+        print("invoked n list")
         
     }
     
     func listenNeighborLists() {
 //        neighborList.removeAll()
+        print(<#T##items: Any...##Any#>)
         var aggregateList: [GroceryList] = [GroceryList]()
         
         FirebaseManager.db.collectionGroup("users").addSnapshotListener{ (querySnapshot, err) in
@@ -85,7 +88,7 @@ class UserHub {
                             let personXReqList: [Item] = self.updateModel(data: data)
                             let personXGroceryList = GroceryList(name: id, groceryItems: personXReqList)
                             aggregateList.append(personXGroceryList)
-                            print("Completed", id,aggregateList)
+//                            print("Completed", id,aggregateList)
                         } else {
                             print("Document does not exist")
                         }
@@ -97,6 +100,7 @@ class UserHub {
             }
         }
         self.neighborList = aggregateList
+        print("aggg ===")
     }
     
 

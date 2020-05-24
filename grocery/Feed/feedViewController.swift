@@ -22,6 +22,8 @@ class feedViewController: UITableViewController {
     
     @IBOutlet var itemTableView: UITableView!
     var objectsArray = [Objects]()
+    
+    var feedList = [GroceryList]()
     var user = UserHub.sharedInstance
 
     override func viewDidLoad() {
@@ -34,13 +36,55 @@ class feedViewController: UITableViewController {
         ]
 //        firebaseSnapshot()
 //        reqListSnapshot()
+        setUpView()
+        
+        print("neighborList", user.neighborList.count)
+        feedList = UserHub.sharedInstance.neighborList
+        NotificationCenter.default.addObserver(forName: .neighborList, object: nil, queue: nil) { (notification) in
+            self.feedList = self.user.neighborList
+            self.itemTableView.reloadData()
+        }
+        
     }
+    
+    func setUpView(){
+        itemTableView.delegate = self
+        itemTableView.dataSource = self
+    }
+
 
     
 
 }
 
 
+//MARK:- TVC ASYNC METHODS v2 with singleton object
+extension feedViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        print("feedList.count", feedList.count)
+        return feedList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return feedList[section].groceryItems.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//           print("papiaaa")
+           
+           tableView.register(UINib(nibName: "ItemView", bundle: nil), forCellReuseIdentifier: "ItemViewCell")
+        let currItem = feedList[indexPath.section].groceryItems[indexPath.row]
+           
+           let cell = tableView.dequeueReusableCell(withIdentifier: "ItemViewCell") as! ItemViewCell
+           
+           cell.setItem(givenItem: currItem)
+           return cell
+       }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return feedList[section].name
+    }
+}
 
 
 //MARK:- TVC ASYNC METHODS HELAL v1

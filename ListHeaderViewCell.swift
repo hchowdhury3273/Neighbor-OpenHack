@@ -17,4 +17,8 @@ class ListHeaderViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setItem(name: String){
+        nameLebel.text = name
+    }
+    
 }

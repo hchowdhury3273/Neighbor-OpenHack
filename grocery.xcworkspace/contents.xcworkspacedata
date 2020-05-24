@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:ListHeaderViewCell.swift">
+      location = "group:/Users/yasinehsan/groceryApp/Neighbor-OpenHack/grocery/View Design/ListHeaderViewCell.xib">
    </FileRef>
    <FileRef
-      location = "group:/Users/yasinehsan/groceryApp/Neighbor-OpenHack/grocery/View Design/ListHeaderViewCell.xib">
+      location = "group:ListHeaderViewCell.swift">
    </FileRef>
    <FileRef
       location = "group:grocery.xcodeproj">

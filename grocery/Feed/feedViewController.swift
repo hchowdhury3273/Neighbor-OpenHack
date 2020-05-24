@@ -108,24 +108,34 @@ extension feedViewController {
 //MARK:- custom TVC headerCell design
 extension feedViewController {
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-           return feedList[section].name
-       }
+//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//           return feedList[section].name
+//       }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         
         
-        tableView.register(UINib(nibName: "ItemView", bundle: nil), forCellReuseIdentifier: "ItemViewCell")
-           let currItem = feedList[indexPath.section].groceryItems[indexPath.row]
-              
-              let cell = tableView.dequeueReusableCell(withIdentifier: "ItemViewCell") as! ItemViewCell
-              
-              cell.setItem(givenItem: currItem)
-              return cell
+//        tableView.register(UINib(nibName: "ItemView", bundle: nil), forCellReuseIdentifier: "ItemViewCell")
+//           let currItem = feedList[indexPath.section].groceryItems[indexPath.row]
+//
+//              let cell = tableView.dequeueReusableCell(withIdentifier: "ItemViewCell") as! ItemViewCell
+//
+//              cell.setItem(givenItem: currItem)
+//              return cell
+        
+        tableView.register(UINib(nibName: "ListHeaderViewCell", bundle: nil), forCellReuseIdentifier: "ListHeaderViewCell")
+        let userName = feedList[section].name
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListHeaderViewCell") as! ListHeaderViewCell
+
+        cell.setItem(name: userName)
+        return cell
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListHeaderViewCell")
+        
+        return cell?.bounds.height ?? 88
     }
 }
 

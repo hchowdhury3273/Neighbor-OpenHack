@@ -19,6 +19,7 @@ class UserHub {
         willSet {
         }
         didSet {
+            print("Shop list uodate")
             NotificationCenter.default.post(name: .shoppingList, object: self)
         }
     }
@@ -47,7 +48,7 @@ class UserHub {
     
     func listenNeighborLists() {
 //        neighborList.removeAll()
-        print(<#T##items: Any...##Any#>)
+        print("n list m called")
         var aggregateList: [GroceryList] = [GroceryList]()
         
         FirebaseManager.db.collectionGroup("users").addSnapshotListener{ (querySnapshot, err) in
@@ -61,13 +62,13 @@ class UserHub {
 //                    SUBCOLLECTION START
                     let id = document.documentID
 //                    let property = document.get("reqList")
-                    if let nameProperty = document.get("name") {
-                          print("property: ", nameProperty)
-                    }
-                    else{
-                            print("name field does not exist")
-                    }
-                    
+//                    if let nameProperty = document.get("name") {
+//                          print("property: ", nameProperty)
+//                    }
+//                    else{
+//                            print("name field does not exist")
+//                    }
+//                    
                     
 //                    if id == FirebaseManager.db_userUid {
 //                        continue

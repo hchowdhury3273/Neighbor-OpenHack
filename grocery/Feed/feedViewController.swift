@@ -1,11 +1,6 @@
 
 import UIKit
 
-//struct Objects{
-//    var sectionName: UIImage!
-//    var sectionObjects: [UIImage]!
-//}
-
 
 class feedViewController: UITableViewController {
     /**NOTES
@@ -29,13 +24,6 @@ class feedViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        objectsArray =
-//            [Objects(sectionName: UIImage(named: "yasin"), sectionObjects: [UIImage(named: "yasin")!,UIImage(named: "avocado")!,UIImage(named: "apple")!, UIImage(named: "lowfatMilk")!]),
-//            Objects(sectionName:UIImage(named: "rageeb"), sectionObjects: [UIImage(named: "rageeb")!,UIImage(named: "greenCabbage")!,UIImage(named: "yellowCorn")!, UIImage(named: "carrot")!]),
-//            Objects(sectionName: UIImage(named: "meng"), sectionObjects: [UIImage(named: "meng")!, UIImage(named: "orange")!,UIImage(named: "ribEyeSteak")!, UIImage(named: "strawberries")!]),
-//        ]
-//        firebaseSnapshot()
-//        reqListSnapshot()
         setUpView()
         
         print("neighborList", user.neighborList.count)
@@ -84,6 +72,11 @@ extension feedViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return feedList[section].name
     }
+}
+
+//MARK:- TVC leading and traing swipes 
+extension feedViewController {
+    
 }
 
 

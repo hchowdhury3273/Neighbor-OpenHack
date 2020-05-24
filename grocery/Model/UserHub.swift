@@ -50,6 +50,7 @@ class UserHub {
 //        neighborList.removeAll()
         print("n list m called")
         var aggregateList: [GroceryList] = [GroceryList]()
+        neighborList.removeAll()
         
         FirebaseManager.db.collectionGroup("users").addSnapshotListener{ (querySnapshot, err) in
             print("HELLO")
@@ -57,6 +58,7 @@ class UserHub {
                 print("Error getting documents: \(err)")
             } else {
                 print("rorar")
+                self.neighborList.removeAll()
                 for (index, document) in querySnapshot!.documents.enumerated() {
 
 //                    SUBCOLLECTION START

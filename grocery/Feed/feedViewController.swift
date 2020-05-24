@@ -23,9 +23,8 @@ class feedViewController: UITableViewController {
      */
     
     @IBOutlet var itemTableView: UITableView!
-    
-    
     var objectsArray = [Objects]()
+    var user = UserHub.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()

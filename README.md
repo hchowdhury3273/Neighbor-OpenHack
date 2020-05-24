@@ -12,7 +12,8 @@
 <div style="display: inline-block;">
   <img src="m1.png"  width="200">
   <img src="m2.png"  width="200">
-  <img src="m3.jpg"  width="200">
+  <img src="m3.png"  width="200">
+  <img src="m4.png"  width="200">
 </div><br/>
 
 ## Completed Stand-Ups / Milestones (2 hours sprints)

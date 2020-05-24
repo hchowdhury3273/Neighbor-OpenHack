@@ -14,10 +14,6 @@
   <img src="m1.png"  width="200">
   <img src="m2.png"  width="200">
    <img src="m3.jpg"  width="200">
-
-<!--   <img src="t5.png"  width="200"> -->
-  <!-- <img src="assets/"  width="295"> -->
-  <!-- <img src="assets/"  width="400"> -->
 </div><br/>
 ![g1](FILENAME.gif)
 
@@ -80,8 +76,12 @@
 - [ ] (Backend) Connect Google Storage to store profile images
 
 ## Useful Links
-- [git ignore + storyboard merge conflict resolves](https://guides.codepath.com/ios/Using-Git-with-Terminal)
-- [pod merge conflict](https://medium.com/@amlcurran/how-to-deal-with-conflicts-in-pod-folders-2eb9fa20f465)
+These were lifesaver tutorials...hopefully someone can find what we did but in less time.
+- [Git ignore + storyboard merge conflict resolves](https://guides.codepath.com/ios/Using-Git-with-Terminal)
+- [Pod merge conflict](https://medium.com/@amlcurran/how-to-deal-with-conflicts-in-pod-folders-2eb9fa20f465)
+- [Integrating basic apple ios app](https://medium.com/appcoda-tutorials/integrating-basic-apple-pay-into-your-ios-app-71f17d48fc9b)
+- [Computed properties in iOS](https://stackoverflow.com/questions/24006234/what-is-the-purpose-of-willset-and-didset-in-swift)
+- [Six ways of passing data between view controllers](https://learnappmaking.com/pass-data-between-view-controllers-swift-how-to/)
 
 
 

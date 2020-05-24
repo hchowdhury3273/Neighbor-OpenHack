@@ -10,7 +10,7 @@ struct FirebaseManager {
     
     
     //db schema names
-    static var db_userUid: String = "utXREMAJ6AWAX8TsjFWM3wjb8mH3"
+    static var db_userUid: String = ""
     static let db_users: String = "users"
     static let db_shopList:  String = "shoppingList"
     static let db_reqList: String = "requestedItems"

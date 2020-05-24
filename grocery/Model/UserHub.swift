@@ -57,12 +57,17 @@ class UserHub {
 
 //                    SUBCOLLECTION START
                     let id = document.documentID
+//                    let property = document.get("reqList")
+                    guard let nameProperty = document.get("name") else {
+                        print("name field does not exist")
+                        return
+                    }
+                    print("property: ", nameProperty)
+                    
                     
 //                    if id == FirebaseManager.db_userUid {
 //                        continue
 //                    }
-//                    aggregateList.insert(<#T##newElement: GroceryList##GroceryList#>, at: <#T##Int#>)
-//                    self.neighborList[index].name = id
                     
                     let subCol = FirebaseManager.col_usersRef.document(id).collection("shoppingList").document("requestedItems")
                     print("ID IS")
@@ -79,7 +84,7 @@ class UserHub {
                             let personXReqList: [Item] = self.updateModel(data: data)
                             let personXGroceryList = GroceryList(name: id, groceryItems: personXReqList)
                             aggregateList.append(personXGroceryList)
-                            print(aggregateList.count)
+                            print("Completed", id,aggregateList)
                         } else {
                             print("Document does not exist")
                         }
@@ -90,6 +95,7 @@ class UserHub {
                 }
             }
         }
+        self.neighborList = aggregateList
     }
     
 

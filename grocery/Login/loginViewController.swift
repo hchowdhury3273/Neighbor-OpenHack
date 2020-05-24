@@ -12,6 +12,13 @@ class loginViewController: UIViewController {
     var verifySegue: String = "loginVCToVerifyVC"
     var dummyNum1: String = "+19171111111"
     
+    var dummyUsers : [String: String] = [
+        "1" : "+19171111111",
+        "2" : "+19172222222",
+        "3" : "+19173333333",
+        "4" : "+19174444444"
+    ]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +56,7 @@ extension loginViewController: UITextFieldDelegate {
         numberTextField.resignFirstResponder()
         
 //        added firebase auth code
-         numberTextField.text = dummyNum1
+        numberTextField.text = dummyUsers[numberTextField.text!]
         if !numberTextField.text!.isEmpty {
         Auth.auth().settings?.isAppVerificationDisabledForTesting = false
         PhoneAuthProvider.provider().verifyPhoneNumber(numberTextField.text!, uiDelegate: nil, completion: { verficationID, error in

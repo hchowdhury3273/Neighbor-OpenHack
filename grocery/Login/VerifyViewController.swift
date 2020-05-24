@@ -9,6 +9,13 @@ class VerifyViewController: UIViewController {
     var profileSegue: String = "verifyVCToProfileVC"
     var dummyCode1: String = "111111"
     
+    var dummyUserCodes : [String: String] = [
+        "1" : "111111",
+        "2" : "222222",
+        "3" : "333333",
+        "4" : "444444"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +38,7 @@ extension VerifyViewController: UITextFieldDelegate {
         print("hellloo")
         
 //        firebase aut codee
-        verifyTextField.text = dummyCode1
+        verifyTextField.text = dummyUserCodes[verifyTextField.text!]
         if verification_id != nil {
             let credential = PhoneAuthProvider.provider().credential(withVerificationID: verification_id!, verificationCode: verifyTextField.text!)
             Auth.auth().signIn(with: credential, completion: { authData, error in
@@ -45,10 +52,13 @@ extension VerifyViewController: UITextFieldDelegate {
                 User.phoneNum = num
                 FirebaseManager.db_userUid = uid
                 
+                print(uid)
+                guard let name = User.name else {return}
+                
                 let firebaseID = FirebaseManager.db_userUid 
 
-                let userProfile = FirebaseManager.db.collection("user").document(firebaseID)
-                userProfile.setData(["number": num, "uid": uid, "deliveries":[uid,uid+"23", uid]], merge: true)
+                let userProfile = FirebaseManager.db.collection("users").document(firebaseID)
+                userProfile.setData(["number": num, "uid": uid, "name": name], merge: true)
                 
                     
 //                    move to next screen

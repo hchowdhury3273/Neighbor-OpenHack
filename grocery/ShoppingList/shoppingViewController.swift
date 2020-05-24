@@ -50,6 +50,27 @@ extension shoppingViewController {
         return shoppingList[section].name
     }
 }
+
+//MARK:- custom TVC headerCell design
+extension shoppingViewController {
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        
+        tableView.register(UINib(nibName: "ListHeaderViewCell", bundle: nil), forCellReuseIdentifier: "ListHeaderViewCell")
+        let userName = shoppingList[section].name
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListHeaderViewCell") as! ListHeaderViewCell
+
+        cell.setItem(name: userName)
+        return cell
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListHeaderViewCell")
+        
+        return cell?.bounds.height ?? 88
+    }
+}
     
     
 //    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

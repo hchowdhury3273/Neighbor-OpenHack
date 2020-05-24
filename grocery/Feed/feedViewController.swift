@@ -94,7 +94,10 @@ extension feedViewController {
             print("roar")
             let path = self.feedList[indexPath.section]
             let name = path.name
-            let deliverItem = path.groceryItems[indexPath.row]
+            let item = path.groceryItems[indexPath.row]
+            let deliveryItem = GroceryList(name: name, groceryItems: [item])
+            
+            self.user.swipedToAddDeliveryList(delivery: deliveryItem)
             
             self.feedList[indexPath.section].groceryItems.remove(at: indexPath.row)
             self.itemTableView.deleteRows(at: [indexPath], with: .left)

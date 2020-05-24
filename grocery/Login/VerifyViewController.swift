@@ -1,10 +1,3 @@
-//
-//  VerifyViewController.swift
-//  grocery
-//
-//  Created by Yasin Ehsan on 3/30/20.
-//  Copyright © 2020 Helal. All rights reserved.
-//
 
 import UIKit
 import FirebaseAuth

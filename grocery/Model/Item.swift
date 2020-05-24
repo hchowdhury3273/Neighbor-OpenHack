@@ -1,10 +1,4 @@
-//
-//  Item.swift
-//  grocery
-//
-//  Created by Yasin Ehsan on 4/2/20.
-//  Copyright © 2020 Helal. All rights reserved.
-//
+
 
 import Foundation
 

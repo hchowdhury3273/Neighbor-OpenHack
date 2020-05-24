@@ -22,6 +22,8 @@
 		1BBFB9542430711900AC322B /* groceryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BBFB9532430711900AC322B /* groceryUITests.swift */; };
 		2F9283BFE10C3A97114C7F5C /* Pods_groceryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EC07761D1B287649C6A936 /* Pods_groceryTests.framework */; };
 		4CBB0E986A7E805FFFAC8381 /* Pods_grocery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7EBC1B2EF5B37B1B1C7A08 /* Pods_grocery.framework */; };
+		7C461F1D247AC3DC0061A6D9 /* ListHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C461F1C247AC3DC0061A6D9 /* ListHeaderViewCell.swift */; };
+		7C461F1F247ACB0F0061A6D9 /* ListHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C461F1B247AC3DC0061A6D9 /* ListHeaderViewCell.xib */; };
 		7C67751C2434193400686E74 /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67751B2434193400686E74 /* NameViewController.swift */; };
 		7C67752124341B2D00686E74 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67752024341B2D00686E74 /* User.swift */; };
 		7C67752524347B0C00686E74 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67752424347B0C00686E74 /* FirebaseManager.swift */; };
@@ -81,6 +83,8 @@
 		69E16D22D949565FC97BBAAE /* Pods_groceryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_groceryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DA0F11F502AC8F6DCDDC6B /* Pods-groceryTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-groceryTests.release.xcconfig"; path = "Target Support Files/Pods-groceryTests/Pods-groceryTests.release.xcconfig"; sourceTree = "<group>"; };
 		7A626E258E4D7B7906856DD4 /* Pods-grocery.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-grocery.release.xcconfig"; path = "Target Support Files/Pods-grocery/Pods-grocery.release.xcconfig"; sourceTree = "<group>"; };
+		7C461F1B247AC3DC0061A6D9 /* ListHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ListHeaderViewCell.xib; path = "/Users/yasinehsan/groceryApp/Neighbor-OpenHack/grocery/View Design/ListHeaderViewCell.xib"; sourceTree = "<absolute>"; };
+		7C461F1C247AC3DC0061A6D9 /* ListHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListHeaderViewCell.swift; path = ../../ListHeaderViewCell.swift; sourceTree = "<group>"; };
 		7C67751B2434193400686E74 /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		7C67752024341B2D00686E74 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7C67752424347B0C00686E74 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 		7CBF635A2458E38700F4B7EF /* View Design */ = {
 			isa = PBXGroup;
 			children = (
+				7C461F1C247AC3DC0061A6D9 /* ListHeaderViewCell.swift */,
+				7C461F1B247AC3DC0061A6D9 /* ListHeaderViewCell.xib */,
 				7C8E7D9A2439BF97003CCAD7 /* ItemView.xib */,
 				7C8E7D9C2439C75A003CCAD7 /* ItemViewCell.swift */,
 			);
@@ -388,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C461F1F247ACB0F0061A6D9 /* ListHeaderViewCell.xib in Resources */,
 				1BBFB93E2430711800AC322B /* LaunchScreen.storyboard in Resources */,
 				7C8E7D9B2439BF97003CCAD7 /* ItemView.xib in Resources */,
 				7CBF63592458D20200F4B7EF /* GoogleService-Info.plist in Resources */,
@@ -513,6 +520,7 @@
 				1BBFB9342430711600AC322B /* SceneDelegate.swift in Sources */,
 				7CC4F60F24313561000EE57E /* ProfileViewController.swift in Sources */,
 				7C8E7D9F2439E867003CCAD7 /* GroceryList.swift in Sources */,
+				7C461F1D247AC3DC0061A6D9 /* ListHeaderViewCell.swift in Sources */,
 				7C67752124341B2D00686E74 /* User.swift in Sources */,
 				1B4435E624319C8B008B9A60 /* mapViewController.swift in Sources */,
 				7C67751C2434193400686E74 /* NameViewController.swift in Sources */,

@@ -81,8 +81,48 @@ extension feedViewController {
            return cell
        }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return feedList[section].name
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        let payNow = UIContextualAction(style: .normal, title: "Add To Cart") { (action, view, nil) in
+            print("roar")
+            let path = self.feedList[indexPath.section]
+            let name = path.name
+            let item = path.groceryItems[indexPath.row]
+            let deliveryItem = GroceryList(name: name, groceryItems: [item])
+            
+            self.user.swipedToAddDeliveryList(delivery: deliveryItem)
+            
+            self.feedList[indexPath.section].groceryItems.remove(at: indexPath.row)
+            self.itemTableView.deleteRows(at: [indexPath], with: .left)
+
+        }
+
+        payNow.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+
+        let config = UISwipeActionsConfiguration(actions: [payNow])
+        config.performsFirstActionWithFullSwipe = true
+        return config
+    }
+}
+
+//MARK:- custom TVC headerCell design
+extension feedViewController {
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        
+        tableView.register(UINib(nibName: "ListHeaderViewCell", bundle: nil), forCellReuseIdentifier: "ListHeaderViewCell")
+        let userName = feedList[section].name
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListHeaderViewCell") as! ListHeaderViewCell
+
+        cell.setItem(name: userName)
+        return cell
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ListHeaderViewCell")
+        
+        return cell?.bounds.height ?? 88
     }
 }
 

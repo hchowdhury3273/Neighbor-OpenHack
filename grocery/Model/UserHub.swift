@@ -46,6 +46,22 @@ class UserHub {
         
     }
     
+    func swipedToAddDeliveryList(delivery: GroceryList) {
+        print("swiped", delivery)
+        var newDelivery: Bool = true
+        for (i,user) in shoppingList.enumerated() {
+            if user.name ==  delivery.name {
+                newDelivery = false
+                shoppingList[i].groceryItems.append(delivery.groceryItems[0])
+            }
+        }
+        if newDelivery {
+            shoppingList.append(delivery)
+        }
+    }
+    
+   
+    
     func listenNeighborLists() {
 //        neighborList.removeAll()
         print("n list m called")

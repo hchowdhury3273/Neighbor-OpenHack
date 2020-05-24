@@ -1,6 +1,11 @@
 
 import UIKit
 
+//struct Objects{
+//    var sectionName: UIImage!
+//    var sectionObjects: [UIImage]!
+//}
+
 
 class feedViewController: UITableViewController {
     /**NOTES
@@ -24,6 +29,13 @@ class feedViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        objectsArray =
+//            [Objects(sectionName: UIImage(named: "yasin"), sectionObjects: [UIImage(named: "yasin")!,UIImage(named: "avocado")!,UIImage(named: "apple")!, UIImage(named: "lowfatMilk")!]),
+//            Objects(sectionName:UIImage(named: "rageeb"), sectionObjects: [UIImage(named: "rageeb")!,UIImage(named: "greenCabbage")!,UIImage(named: "yellowCorn")!, UIImage(named: "carrot")!]),
+//            Objects(sectionName: UIImage(named: "meng"), sectionObjects: [UIImage(named: "meng")!, UIImage(named: "orange")!,UIImage(named: "ribEyeSteak")!, UIImage(named: "strawberries")!]),
+//        ]
+//        firebaseSnapshot()
+//        reqListSnapshot()
         setUpView()
         
         print("neighborList", user.neighborList.count)
@@ -74,9 +86,27 @@ extension feedViewController {
     }
 }
 
-//MARK:- TVC leading and traing swipes 
+//MARK:- TVC leading and traing swipes
 extension feedViewController {
-    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+
+        let payNow = UIContextualAction(style: .normal, title: "Add To Cart") { (action, view, nil) in
+            print("roar")
+            let path = self.feedList[indexPath.section]
+            let name = path.name
+            let deliverItem = path.groceryItems[indexPath.row]
+            
+            self.feedList[indexPath.section].groceryItems.remove(at: indexPath.row)
+            self.itemTableView.deleteRows(at: [indexPath], with: .left)
+
+        }
+
+        payNow.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+
+        let config = UISwipeActionsConfiguration(actions: [payNow])
+        config.performsFirstActionWithFullSwipe = true
+        return config
+    }
 }
 
 

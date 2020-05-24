@@ -61,8 +61,8 @@ class UserHub {
 //                    if id == FirebaseManager.db_userUid {
 //                        continue
 //                    }
-                    aggregateList.insert(<#T##newElement: GroceryList##GroceryList#>, at: <#T##Int#>)
-                    self.neighborList[index].name = id
+//                    aggregateList.insert(<#T##newElement: GroceryList##GroceryList#>, at: <#T##Int#>)
+//                    self.neighborList[index].name = id
                     
                     let subCol = FirebaseManager.col_usersRef.document(id).collection("shoppingList").document("requestedItems")
                     print("ID IS")
@@ -74,14 +74,12 @@ class UserHub {
                               print("Document data was empty.")
                               return
                            }
-                              for output in data {
-                                  if let itemDeets = output.value as? [String] {
-                                      let shopItem = Item(price: itemDeets[1], name: output.key, notes: itemDeets[0])
-                                  self.neighborList[index].groceryItems.insert(shopItem, at: 0)
-                                    print(shopItem)
-                                  }
-                              }
-                            print(self.neighborList)
+//                              self.neighborList[index].groceryItems.insert(shopItem, at: 0)
+//                            print(self.neighborList)
+                            let personXReqList: [Item] = self.updateModel(data: data)
+                            let personXGroceryList = GroceryList(name: id, groceryItems: personXReqList)
+                            aggregateList.append(personXGroceryList)
+                            print(aggregateList.count)
                         } else {
                             print("Document does not exist")
                         }
@@ -116,15 +114,14 @@ class UserHub {
        }
        
        func updateModel(data: [String: Any]) -> [Item]{
-           requestedList.removeAll()
         var newReqList: [Item] = [Item]()
             for output in data {
                if let itemDeets = output.value as? [String] {
                    let shopItem = Item(price: itemDeets[1], name: output.key, notes: itemDeets[0])
-                requestedList.insert(shopItem, at: 0)
                 newReqList.insert(shopItem, at: 0)
                }
            }
+            return newReqList
        }
     
 }

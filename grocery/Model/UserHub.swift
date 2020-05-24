@@ -84,24 +84,29 @@ class UserHub {
                               print("Document data was empty.")
                               return
                            }
+                            print("workedddd" )
 //                              self.neighborList[index].groceryItems.insert(shopItem, at: 0)
 //                            print(self.neighborList)
                             let personXReqList: [Item] = self.updateModel(data: data)
                             let personXGroceryList = GroceryList(name: id, groceryItems: personXReqList)
+                            self.neighborList.append(personXGroceryList)
                             aggregateList.append(personXGroceryList)
+                            
+//                            append(personXGroceryList)
+                            print("sdoddne", index, aggregateList.count)
 //                            print("Completed", id,aggregateList)
                         } else {
                             print("Document does not exist")
                         }
                     }
-
+                    print("sdoddne2", aggregateList.count)
 //                    SUBCOLLECTION END
 
                 }
             }
         }
         self.neighborList = aggregateList
-        print("aggg ===")
+        print("aggg ===", aggregateList.count)
     }
     
 

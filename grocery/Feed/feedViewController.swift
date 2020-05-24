@@ -24,7 +24,7 @@ class feedViewController: UITableViewController {
 //    var objectsArray = [Objects]()
     
     var feedList = [GroceryList]()
-    var user = UserHub.sharedInstance
+    let user = UserHub.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,12 +8,8 @@ class UserHub {
 //    for homeVC table view
     var requestedList: [Item] = [Item]() {
         willSet {
-            let list = UserHub.sharedInstance.requestedList
-//            print("willset \(list.count)")
         }
         didSet {
-            let list = UserHub.sharedInstance.requestedList
-//            print("didset \(list.count)")
             NotificationCenter.default.post(name: .vcOneAction, object: self)
         }
     }
@@ -21,36 +17,101 @@ class UserHub {
 //    for shoppingVC table view
     var shoppingList: [GroceryList] = [GroceryList]() {
         willSet {
-//            print("CHNAGEING SHOP LIST")
         }
         didSet {
+            print("Shop list uodate")
             NotificationCenter.default.post(name: .shoppingList, object: self)
         }
     }
     
-    var deliveryList: [GroceryList] = [GroceryList]()
+//    for feedVC table view
+    var neighborList: [GroceryList] = [GroceryList]() {
+        willSet {
+            
+        }
+        didSet {
+            print("neibotListUpdate")
+            NotificationCenter.default.post(name: .neighborList, object: self)
+        }
+    }
+    
     
     
     private init() {
         listenDbChanges()
         let userList = GroceryList(name: User.name ?? "My List", groceryItems: requestedList)
         shoppingList.append(userList)
-        getDocOnce()
+        listenNeighborLists()
+        print("invoked n list")
+        
     }
     
-    func getDocOnce() {
-        FirebaseManager.col_usersRef.getDocuments() { (querySnapshot, err) in
+    func listenNeighborLists() {
+//        neighborList.removeAll()
+        print("n list m called")
+        var aggregateList: [GroceryList] = [GroceryList]()
+        neighborList.removeAll()
+        
+        FirebaseManager.db.collectionGroup("users").addSnapshotListener{ (querySnapshot, err) in
             print("HELLO")
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-                for document in querySnapshot!.documents {
+                print("rorar")
+                self.neighborList.removeAll()
+                for (index, document) in querySnapshot!.documents.enumerated() {
 
-//                    print("\(document.documentID) => \(document.data())")
+//                    SUBCOLLECTION START
+                    let id = document.documentID
+//                    let property = document.get("reqList")
+//                    if let nameProperty = document.get("name") {
+//                          print("property: ", nameProperty)
+//                    }
+//                    else{
+//                            print("name field does not exist")
+//                    }
+//
+                    
+//                    if id == FirebaseManager.db_userUid {
+//                        continue
+//                    }
+                    
+                    let subCol = FirebaseManager.col_usersRef.document(id).collection("shoppingList").document("requestedItems")
+                    print("ID IS")
+
+                    subCol.getDocument { (document, error) in
+                        
+                        if let document = document, document.exists {
+                            guard let data = document.data() else {
+                              print("Document data was empty.")
+                              return
+                           }
+                            print("workedddd" )
+//                              self.neighborList[index].groceryItems.insert(shopItem, at: 0)
+//                            print(self.neighborList)
+                            let personXReqList: [Item] = self.updateModel(data: data)
+                            let personXGroceryList = GroceryList(name: id, groceryItems: personXReqList)
+                            self.neighborList.append(personXGroceryList)
+                            aggregateList.append(personXGroceryList)
+                            
+//                            append(personXGroceryList)
+                            print("sdoddne", index, aggregateList.count)
+//                            print("Completed", id,aggregateList)
+                        } else {
+                            print("Document does not exist")
+                        }
+                    }
+                    print("sdoddne2", aggregateList.count)
+//                    SUBCOLLECTION END
+
                 }
             }
         }
+        self.neighborList = aggregateList
+        print("aggg ===", aggregateList.count)
     }
+    
+
        
    func listenDbChanges(){
    //        sync up model with firebase here
@@ -65,19 +126,21 @@ class UserHub {
                return
              }
 //             print("Current data: \(data.keys)")
-             self.updateModel(data: data)
+             self.requestedList = self.updateModel(data: data)
+             self.shoppingList[0].groceryItems = self.requestedList
            }
+    
        }
        
-       func updateModel(data: [String: Any]){
-           requestedList.removeAll()
+       func updateModel(data: [String: Any]) -> [Item]{
+        var newReqList: [Item] = [Item]()
             for output in data {
                if let itemDeets = output.value as? [String] {
                    let shopItem = Item(price: itemDeets[1], name: output.key, notes: itemDeets[0])
-                requestedList.insert(shopItem, at: 0)
+                newReqList.insert(shopItem, at: 0)
                }
            }
-            shoppingList[0].groceryItems = requestedList
+            return newReqList
        }
     
 }

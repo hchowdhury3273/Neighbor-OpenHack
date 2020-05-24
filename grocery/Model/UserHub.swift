@@ -68,7 +68,7 @@ class UserHub {
 //                    else{
 //                            print("name field does not exist")
 //                    }
-//                    
+//
                     
 //                    if id == FirebaseManager.db_userUid {
 //                        continue

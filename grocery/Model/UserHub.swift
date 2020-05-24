@@ -44,7 +44,8 @@ class UserHub {
     }
     
     func listenNeighborLists() {
-        neighborList.removeAll()
+//        neighborList.removeAll()
+        var aggregateList: [GroceryList] = [GroceryList]()
         
         FirebaseManager.db.collectionGroup("users").addSnapshotListener{ (querySnapshot, err) in
             print("HELLO")
@@ -57,10 +58,12 @@ class UserHub {
 //                    SUBCOLLECTION START
                     let id = document.documentID
                     
-                    if id == FirebaseManager.db_userUid {
-                        continue
-                    }
+//                    if id == FirebaseManager.db_userUid {
+//                        continue
+//                    }
+                    aggregateList.insert(<#T##newElement: GroceryList##GroceryList#>, at: <#T##Int#>)
                     self.neighborList[index].name = id
+                    
                     let subCol = FirebaseManager.col_usersRef.document(id).collection("shoppingList").document("requestedItems")
                     print("ID IS")
 
@@ -106,18 +109,20 @@ class UserHub {
                return
              }
 //             print("Current data: \(data.keys)")
-             self.updateModel(data: data)
+             self.requestedList = self.updateModel(data: data)
              self.shoppingList[0].groceryItems = self.requestedList
            }
     
        }
        
-       func updateModel(data: [String: Any]){
+       func updateModel(data: [String: Any]) -> [Item]{
            requestedList.removeAll()
+        var newReqList: [Item] = [Item]()
             for output in data {
                if let itemDeets = output.value as? [String] {
                    let shopItem = Item(price: itemDeets[1], name: output.key, notes: itemDeets[0])
                 requestedList.insert(shopItem, at: 0)
+                newReqList.insert(shopItem, at: 0)
                }
            }
        }

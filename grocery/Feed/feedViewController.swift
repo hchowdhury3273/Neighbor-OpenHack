@@ -81,13 +81,6 @@ extension feedViewController {
            return cell
        }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return feedList[section].name
-    }
-}
-
-//MARK:- TVC leading and traing swipes
-extension feedViewController {
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
         let payNow = UIContextualAction(style: .normal, title: "Add To Cart") { (action, view, nil) in
@@ -109,6 +102,30 @@ extension feedViewController {
         let config = UISwipeActionsConfiguration(actions: [payNow])
         config.performsFirstActionWithFullSwipe = true
         return config
+    }
+}
+
+//MARK:- custom TVC headerCell design
+extension feedViewController {
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+           return feedList[section].name
+       }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        
+        
+        tableView.register(UINib(nibName: "ItemView", bundle: nil), forCellReuseIdentifier: "ItemViewCell")
+           let currItem = feedList[indexPath.section].groceryItems[indexPath.row]
+              
+              let cell = tableView.dequeueReusableCell(withIdentifier: "ItemViewCell") as! ItemViewCell
+              
+              cell.setItem(givenItem: currItem)
+              return cell
+    }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
     }
 }
 

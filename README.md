@@ -1,8 +1,8 @@
 # Neighbor
 
-**About:** A platform for users to post grocery items they need, and for neighbors to see the items requested by those near them, allowing them to buy and deliver the groceries in a seamless way. This enforces quarantine behaviour, and helps build community growth
+**About:** A platform for users to post grocery items they need, and for neighbors to see the items requested by those near them, allowing them to buy and deliver the groceries in a seamless way. This enforces quarantine behavior, and helps build community growth
 
-**Built With:** Swift, Xcode, Zeplin, Google Cloud, Firebase, Stripe API, Google Analytics
+**Built With:** Swift, Xcode, Zeplin, Google Cloud, Firebase oAuth, Firebase Firestore, Stripe API, Google Analytics, MongoDB
 
 **iOS Frameworks:** UIKit, MapKit, CoreLocation, FlyoverKit, UserNotifications, EventKit, Contacts, Firebase, Parse, Authentication, iCarousel, AlamoFire
 
@@ -21,26 +21,49 @@
 </div><br/>
 ![g1](FILENAME.gif)
 
-## Stand-Ups / Milestones
+## Completed Stand-Ups / Milestones (2 hours sprints)
 - [x] (Design) Wireframes
 - [x] (Design) Zeplin components
 - [x] (Native) Create boilerplate w rotating map
-- [x] (Backend) Connect double segmented market to non-relational database
+- [x] (Backend) Connect Google Authentication with Apple Account Plist
+- [x] (Backend) Connect Google Firestore with Device
+- [x] (Backend) Connect Database real time updates
 - [x] (Native) Implement Apple Calnder and Apple Map transitions
+- [x] (BackEnd) Connect Stripe API Sandbox account dummy account
 
 ## Roadblocks Overcame
-- **Pull Requests** with differnt pod folders and stroyboard edits in different branches
-- **Async calls** View Controller life cycle order of call between delegate and protocol methods
-- **Geofence Limitation** Apple Places a limatation on tracking 20 physical barriers at a time
-    - We came up w an algorithim that works around that limitation w/o eating the battery
+- **Create Modular Code** Ever hate rewriting code? We used a singleton and MVC design patterns to write static objects and serialize and de-serialize objects between views on the phone and users in database.
+```swift
+  static let sharedInstance = UserHub()
+  static let db = Firestore.firestore()
+```
+- **Local Notifications Observers** Using them between View controllers we were able to write code in our singleton class and any changes made any other class would trigger local observers.
+```Swift
+    var shoppingList: [GroceryList] = [GroceryList]() {
+        didSet {
+            NotificationCenter.default.post(name: .shoppingList, object: self)
+        }
+    }
+    NotificationCenter.default.addObserver(forName: .vcOneAction, object: nil, queue: nil) { (notification) in
+                self.items = self.user.requestedList
+                self.itemTableView.reloadData()
+            }
+
+```
+- **Global Database Observers**  We used realtime snapshots to listen to collections and sub-collections in real time feed. Most of the time in the hackathon was spent here.
+```Swift
+
+```
 
 ## If we had more time
+- [ ] (BackEnd) Connect real time payments on the app
+- [ ] (BackEnd) Use MongoDB Atlas to store payment data (easy integ w Stripe)
+- [ ] (Backend) Connect Google Storage to store profile images
 
 ## Useful Links
 - [git ignore + storyboard merge conflict resolves](https://guides.codepath.com/ios/Using-Git-with-Terminal)
 - [pod merge conflict](https://medium.com/@amlcurran/how-to-deal-with-conflicts-in-pod-folders-2eb9fa20f465)
-- [Apple ML Kit](https://www.youtube.com/watch?v=p6GA8ODlnX0)
-- [Microsoft ML Studio](https://studio.azureml.net/)
+
 
 
 

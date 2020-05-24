@@ -8,6 +8,17 @@ class ItemFormViewController: UIViewController {
     @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     
+    var dummyUserCodes : [String: String] = [
+           "av" : "avocado",
+           "b" : "bread",
+           "ap" : "apple",
+           "c" : "chips",
+           "m" : "milk",
+           "cr" : "carrot"
+        
+       ]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

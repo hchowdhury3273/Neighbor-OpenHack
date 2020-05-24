@@ -7,6 +7,15 @@ class ItemViewCell: UITableViewCell {
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemPrice: UILabel!
     
+    var dummyUserCodes : [String: String] = [
+           "av" : "avocado",
+           "b" : "bread",
+           "ap" : "apple",
+           "c" : "chips",
+           "m" : "milk",
+           "cr" : "carrot"
+        
+       ]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,7 +30,7 @@ class ItemViewCell: UITableViewCell {
     
     func setItem(givenItem: Item) {
 //          itemImage.image = givenItem.image
-          itemImage.image = UIImage(named: "onions") ?? UIImage()
+          itemImage.image = UIImage(named: "chips") ?? UIImage()
           itemName.text = givenItem.name
           itemPrice.text = givenItem.price
           

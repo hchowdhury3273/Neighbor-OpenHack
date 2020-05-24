@@ -11,11 +11,10 @@
 ## [Video Walkthrough]()
 <div style="display: inline-block;">
   <div style="display: inline-block;">
-  <img src="m1.png"  width="200">
-  <img src="m2.png"  width="200">
-   <img src="m3.jpg"  width="200">
+  <img src="m1.png"  width="150">
+  <img src="m2.png"  width="150">
+  <img src="m3.jpg"  width="150">
 </div><br/>
-![g1](FILENAME.gif)
 
 ## Completed Stand-Ups / Milestones (2 hours sprints)
 - [x] (Design) Wireframes

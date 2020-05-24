@@ -45,9 +45,12 @@ extension shoppingViewController {
            cell.setItem(givenItem: currItem)
            return cell
        }
+    
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return shoppingList[section].name
     }
+}
+    
     
 //    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        <#code#>
@@ -93,5 +96,5 @@ extension shoppingViewController {
 //            })
 //        }
 //
-}
+
 

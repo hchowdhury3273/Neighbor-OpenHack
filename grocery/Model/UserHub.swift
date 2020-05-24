@@ -58,11 +58,12 @@ class UserHub {
 //                    SUBCOLLECTION START
                     let id = document.documentID
 //                    let property = document.get("reqList")
-                    guard let nameProperty = document.get("name") else {
-                        print("name field does not exist")
-                        return
+                    if let nameProperty = document.get("name") {
+                          print("property: ", nameProperty)
                     }
-                    print("property: ", nameProperty)
+                    else{
+                            print("name field does not exist")
+                    }
                     
                     
 //                    if id == FirebaseManager.db_userUid {

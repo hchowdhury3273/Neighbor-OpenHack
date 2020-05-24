@@ -36,7 +36,7 @@ class feedViewController: UITableViewController {
         ]
 //        firebaseSnapshot()
 //        reqListSnapshot()
-        readAllDocsInCollection()
+//        readAllDocsInCollection()
 //        listenForChangeInCollection()
     }
     

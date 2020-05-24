@@ -28,29 +28,74 @@ class UserHub {
         }
     }
     
-    var deliveryList: [GroceryList] = [GroceryList]()
+    var neighborList: [GroceryList] = [GroceryList]() {
+        willSet {
+            
+        }
+        didSet {
+            
+        }
+    }
+    
     
     
     private init() {
         listenDbChanges()
         let userList = GroceryList(name: User.name ?? "My List", groceryItems: requestedList)
         shoppingList.append(userList)
-        getDocOnce()
+//        listenNeighborLists()
+        
     }
     
-    func getDocOnce() {
-        FirebaseManager.col_usersRef.getDocuments() { (querySnapshot, err) in
-            print("HELLO")
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
+//    func listenNeighborLists() {
+//        FirebaseManager.db.collectionGroup("users").addSnapshotListener{ (querySnapshot, err) in
+//            print("HELLO")
+//            if let err = err {
+//                print("Error getting documents: \(err)")
+//            } else {
+//                print("rorar")
+//                for document in querySnapshot!.documents {
+//
+////                    SUBCOLLECTION START
+//                    let id = document.documentID
+//                    let subCol = FirebaseManager.col_usersRef.document(id).collection("shoppingList").document("requestedItems")
+//                    print("ID IS")
+//
+//                    subCol.getDocument { (document, error) in
+//
+//                        if let document = document, document.exists {
+////                            let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+//                            guard let data = document.data() else {
+//                              print("Document data was empty.")
+//                              return
+//                           }
+//              //              print("Current data: \(data.keys)")
+//                              for output in data {
+//                                  if let itemDeets = output.value as? [String] {
+//                                      let shopItem = Item(price: itemDeets[1], name: output.key, notes: itemDeets[0])
+//                                    print(shopItem)
+//                                  }
+//                              }
+//
+//
+////                            print("Document data: \(dataDescription)")
+//                        } else {
+//                            print("Document does not exist")
+//                        }
+//
+//
+//
+//                    }
+//
+////                    SUBCOLLECTION END
+//
+////                    print("\(document.documentID) => \(document.data())")
+//                }
+//            }
+//        }
+//    }
+    
 
-//                    print("\(document.documentID) => \(document.data())")
-                }
-            }
-        }
-    }
        
    func listenDbChanges(){
    //        sync up model with firebase here
@@ -66,7 +111,9 @@ class UserHub {
              }
 //             print("Current data: \(data.keys)")
              self.updateModel(data: data)
+             self.shoppingList[0].groceryItems = self.requestedList
            }
+    
        }
        
        func updateModel(data: [String: Any]){
@@ -77,7 +124,6 @@ class UserHub {
                 requestedList.insert(shopItem, at: 0)
                }
            }
-            shoppingList[0].groceryItems = requestedList
        }
     
 }

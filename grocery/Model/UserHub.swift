@@ -79,18 +79,13 @@ class UserHub {
 
 //                    SUBCOLLECTION START
                     let id = document.documentID
-//                    let property = document.get("reqList")
-//                    if let nameProperty = document.get("name") {
-//                          print("property: ", nameProperty)
-//                    }
-//                    else{
-//                            print("name field does not exist")
-//                    }
+                    let property = document.get("reqList")
+                    
 //
                     
-//                    if id == FirebaseManager.db_userUid {
-//                        continue
-//                    }
+                    if id == FirebaseManager.db_userUid {
+                        continue
+                    }
                     
                     let subCol = FirebaseManager.col_usersRef.document(id).collection("shoppingList").document("requestedItems")
                     print("ID IS")
@@ -105,8 +100,11 @@ class UserHub {
                             print("workedddd" )
 //                              self.neighborList[index].groceryItems.insert(shopItem, at: 0)
 //                            print(self.neighborList)
+                            
+                            let nameProperty = document.get("name") ?? ""
+                            
                             let personXReqList: [Item] = self.updateModel(data: data)
-                            let personXGroceryList = GroceryList(name: id, groceryItems: personXReqList)
+                            let personXGroceryList = GroceryList(name: nameProperty as! String, groceryItems: personXReqList)
                             self.neighborList.append(personXGroceryList)
                             aggregateList.append(personXGroceryList)
                             

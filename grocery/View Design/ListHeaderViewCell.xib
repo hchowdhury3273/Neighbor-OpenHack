@@ -22,12 +22,24 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snt-oh-8ot">
                         <rect key="frame" x="94" y="38" width="141" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94333755970001221" green="0.58106174819872325" blue="0.43769369662682078" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oVk-WY-d7z">
+                        <rect key="frame" x="7" y="0.0" width="74" height="77"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="userHead2" translatesAutoresizingMaskIntoConstraints="NO" id="Ufn-we-zyM">
+                                <rect key="frame" x="17" y="21" width="41" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="0o5-Gj-CoZ" secondAttribute="bottom" id="8nh-J9-yFw"/>
                     <constraint firstItem="0o5-Gj-CoZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="BiR-yv-DQa"/>
@@ -40,10 +52,11 @@
                 <outlet property="nameLebel" destination="snt-oh-8ot" id="lbe-0g-VEt"/>
                 <outlet property="pfpImageView" destination="0o5-Gj-CoZ" id="Y2M-sT-1Lk"/>
             </connections>
-            <point key="canvasLocation" x="126.81159420289856" y="103.79464285714285"/>
+            <point key="canvasLocation" x="136.95652173913044" y="97.767857142857139"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="userHead2" width="256" height="256"/>
         <image name="yasin" width="337" height="84"/>
     </resources>
 </document>

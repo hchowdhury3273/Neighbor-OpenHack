@@ -65,7 +65,7 @@
 		1B4435E924319CD4008B9A60 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		1B4435EF24320871008B9A60 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		1B7EBC1B2EF5B37B1B1C7A08 /* Pods_grocery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_grocery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1BBFB92E2430711600AC322B /* grocery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = grocery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BBFB92E2430711600AC322B /* Neighbor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neighbor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BBFB9312430711600AC322B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BBFB9332430711600AC322B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1BBFB9382430711600AC322B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		1BBFB92F2430711600AC322B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1BBFB92E2430711600AC322B /* grocery.app */,
+				1BBFB92E2430711600AC322B /* Neighbor.app */,
 				1BBFB9442430711900AC322B /* groceryTests.xctest */,
 				1BBFB94F2430711900AC322B /* groceryUITests.xctest */,
 			);
@@ -304,7 +304,7 @@
 			);
 			name = grocery;
 			productName = grocery;
-			productReference = 1BBFB92E2430711600AC322B /* grocery.app */;
+			productReference = 1BBFB92E2430711600AC322B /* Neighbor.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1BBFB9432430711900AC322B /* groceryTests */ = {
@@ -710,12 +710,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yasinehsan.grocery2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.theopencode.hack.neighbor;
+				PRODUCT_NAME = Neighbor;
 				SWIFT_OBJC_BRIDGING_HEADER = "grocery/ShoppingList/grocery-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -732,11 +732,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yasinehsan.grocery2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.theopencode.hack.neighbor;
+				PRODUCT_NAME = Neighbor;
 				SWIFT_OBJC_BRIDGING_HEADER = "grocery/ShoppingList/grocery-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
